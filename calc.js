@@ -6,6 +6,8 @@ function getPercent(x, percent) {
     return x * percent / 100;
 }
 
+let functions={"addition":"makeAddtion","multiplication":"multiplication"};
+
 function checkForSignBeforeParenthesis(value) {
 
     var charAtLength = value[value.length - 1];
