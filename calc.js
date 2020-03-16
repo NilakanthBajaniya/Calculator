@@ -1,15 +1,161 @@
 
 var $ = function (id) { return document.getElementById(id); }
 
+function getPercent(x, percent) {
+
+    return x * percent / 100;
+}
+
+function checkForSignBeforeParenthesis(value) {
+
+    var charAtLength = value[value.length - 1];
+    if (charAtLength == '+' || charAtLength == '-' || charAtLength == '*' || charAtLength == '/') {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+function parenthesis() {
+
+    var value = $('display').value;
+    if (this.value == '(') {
+
+        if (value == '0') {
+
+            $('display').value = '(';
+        }
+        else if (value.length == 1) {
+
+            debugger;
+            alert('Enter a valid input');
+
+        } else if (value.length > 1) {
+
+            if (checkForSignBeforeParenthesis(value) && value[value.length - 1] != ')') {
+
+                $('display').value += '(';
+                disableButtonsByName('btnMath');
+
+            } else {
+                debugger
+                alert('Enter a valid input');
+            }
+
+        }
+    } else if (this.value == ')') {
+
+        if (value.length > 1 && value != '0' && !checkForSignBeforeParenthesis(value) && value[value.length - 1] != '(') {
+            $('display').value += ')';
+        } else {
+            alert('Enter a valid input');
+        }
+
+    }
+}
+
+function printPercent() {
+    if ($('display').value != '0' && parseInputString($('display').value)) {
+
+        var value = $('display').value;
+        var i = value.length - 1;
+        for (i; i != 0; i--) {
+
+            if (isNaN(value[i]))
+                break;
+        }
+
+        var evalString = value.substring(0, i);
+        var percent = parseFloat(value.substring(i + 1, value.length));
+
+        if (value[i] == '+') {
+
+            $('display').value = eval(evalString) + getPercent(eval(evalString), percent);
+        }
+
+        else if (value[i] == '-') {
+
+            $('display').value = eval(evalString) - getPercent(eval(evalString), percent);
+
+        } else if (value[i] == '*') {
+
+            $('display').value = getPercent(eval(evalString), percent);
+
+        } else if (value[i] == '/') {
+
+            $('display').value = eval(evalString) / (percent / 100);
+
+        } else {
+            alert("Enter a valid input");
+        }
+
+
+    }
+}
+
 function printOperation(operation) {
+
+    event.preventDefault();
 
     if (operation == 'PI') {
 
         if ($('display').value != '0' && parseInputString($('display').value)) {
 
             $('display').value = eval('Math.PI *' + $('display').value);
-        }
 
+        } else if ($('display').value == '0') {
+            $('display').value = eval('Math.PI');
+        } else {
+            debugger
+            alert('Enter a valid input');
+        }
+    } else if (operation == 'power') {
+
+        if ($('display').value != '0' && parseInputString($('display').value)) {
+
+            disableButtonsByName('btnOpps');
+            disableButtonsByName('btnMath');
+            disableButtonsByName('btnTrigonometry');
+
+            $('display').value = eval($('display').value) + '^';
+
+            alert('Enter the power and hit "=" for result');
+
+        } else {
+            debugger
+            alert('Enter a valid input');
+        }
+    } else if (operation == 'log') {
+
+        if ($('display').value != '0' && parseInputString($('display').value)) {
+
+            $('display').value = Math.log(eval($('display').value));
+
+        } else {
+            debugger
+            alert('Enter a valid input');
+        }
+    } else if (operation == 'root') {
+
+        if ($('display').value != '0' && parseInputString($('display').value)) {
+
+            $('display').value = Math.sqrt(eval($('display').value));
+
+        } else {
+            debugger
+            alert('Enter a valid input');
+        }
+    } else if (operation == 'square') {
+
+        if ($('display').value != '0' && parseInputString($('display').value)) {
+
+            $('display').value = eval($('display').value) * eval($('display').value);
+
+        } else {
+            debugger
+            alert('Enter a valid input');
+        }
     }
 
 };
@@ -81,8 +227,31 @@ function executeTopButtons() {
         try {
 
             var check = parseInputString($('display').value);
+            var value = $('display').value;
 
-            if (check) {
+            if (check && value.includes('^')) {
+
+                var arr = value.split('^');
+
+                var base = parseFloat(arr[0]);
+                var power = parseFloat(arr[1]);
+
+                if (base != null && power != null) {
+                    while (power != 1) {
+                        base *= base;
+                        power--;
+                    }
+                    $('display').value = base;
+                } else {
+                    debugger
+                    alert("Enter valid input");
+                }
+                enableButtonsByName('btnOpps');
+                enableButtonsByName('btnMath');
+                enableButtonsByName('btnTrigonometry');
+
+            }
+            else if (check) {
                 $('display').value = eval($('display').value);
             }
             else {
@@ -99,7 +268,7 @@ function executeTopButtons() {
 
 function appendInput() {
     $('display').value == '0' ? $('display').value = this.value : $('display').value += this.value;
-    enableButtonsByName('btnMath');
+    !$('display').value.includes('^') ? enableButtonsByName('btnMath') : true;
 };
 
 function appendArithmeticSymbol() {
@@ -109,7 +278,7 @@ function appendArithmeticSymbol() {
         alert('You can not enter Two arithmetic signs together\n');
 
     } else {
-        $('display').value == '0' ? $('display').value = this.value : $('display').value += this.value;
+        $('display').value == '0' ? alert('Enter valid input') : $('display').value += this.value;
         disableButtonsByName('btnMath');
     }
 };
@@ -140,7 +309,7 @@ window.onload = function () {
     var arithmeticButtons = document.getElementsByName('btnMath');
     var topButtons = document.getElementsByName('btnTop');
     var trigonoButtons = document.getElementsByName('btnTrigonometry');
-    var oppButtons = document.getElementsByName('btnOpps');
+    var parenthesisbuttons = document.getElementsByName('btnParenthesis');
 
     for (var i = 0; i < numberButtons.length; i++)
         numberButtons[i].onclick = appendInput;
@@ -154,6 +323,6 @@ window.onload = function () {
     for (var i = 0; i < trigonoButtons.length; i++)
         trigonoButtons[i].onclick = executeMathFunctions;
 
-    // for (var i = 0; i < oppButtons.length; i++)
-    //     oppButtons[i].onclick = executeOperationFunctions;
+    for (var i = 0; i < parenthesisbuttons.length; i++)
+        parenthesisbuttons[i].onclick = parenthesis;
 };

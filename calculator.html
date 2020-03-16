@@ -85,35 +85,42 @@
                 </td>
                 <td><input type="button" class="btnTop" name="btnTop" value="<--"></td>
                 <td><input type="button" class="btnTop" name="btnTop" value="="></td>
-                <td><button class="btnOpps" name="btnOpps" value="Pi" onclick="printOperation('PI')">&#960;</button></td> <!-- pi -->
-                <td><input type="button" class="btnMath" name="btnMath" value="%">
+                <td><button class="btnOpps" name="btnOpps" value="Pi" onclick="printOperation('PI')">&#960;</button>
+                </td> <!-- pi -->
+                <td><input type="button" class="btnMath" name="btnOpp" value="%" onclick="printPercent()">
                 </td>
             </tr>
             <tr>
                 <td><input type="button" class="btnNum" name="btnNum" value="7"></td>
                 <td><input type="button" class="btnNum" name="btnNum" value="8"></td>
                 <td><input type="button" class="btnNum" name="btnNum" value="9"></td>
-                <td><input type="button" class="btnOpps" name="btnOpps" value="x&#94;"></td>
+                <td><input type="button" class="btnOpps" name="btnOpps" value="x&#94;"
+                        onclick="printOperation('power')"></td>
                 <td><input type="button" class="btnMath" name="btnMath" value="/"></td>
             <tr>
                 <td><input type="button" class="btnNum" name="btnNum" value="4"></td>
                 <td><input type="button" class="btnNum" name="btnNum" value="5"></td>
                 <td><input type="button" class="btnNum" name="btnNum" value="6"></td>
-                <td><input type="button" class="btnOpps" name="btnOpps" value="ln"></td>
+                <td><input type="button" class="btnOpps" name="btnOpps" value="log" onclick="printOperation('log')">
+                </td>
                 <td><input type="button" class="btnMath" name="btnMath" value="*"></td>
             </tr>
             <tr>
                 <td><input type="button" class="btnNum" name="btnNum" value="1"></td>
                 <td><input type="button" class="btnNum" name="btnNum" value="2"></td>
                 <td><input type="button" class="btnNum" name="btnNum" value="3"></td>
-                <td><input type="button" class="btnOpps" name="btnOpps" value="&radic;"></td> <!-- Root -->
+                <td><button class="btnOpps" name="btnOpps" value="root"
+                        onclick="printOperation('root')">&radic;x</button></td> <!-- Root -->
                 <td><input type="button" class="btnMath" name="btnMath" value="-"></td>
             </tr>
             <tr>
                 <td><input type="button" class="btnMath" name="" value="&#177"></td> <!-- Negative -->
                 <td><input type="button" class="btnNum" name="btnNum" value="0"></td>
                 <td><input type="button" class="btnMath" name="btnMath" value="&#46;"></td> <!-- dot -->
-                <td><input type="button" class="btnOpps" name="btnOpps" value="x&#50;"></td> <!-- x square -->
+                <td>
+                    <button class="btnOpps" name="btnOpps" value="root"
+                        onclick="printOperation('square')">x&#50;</button>
+                </td> <!-- x square -->
                 <td><input type="button" class="btnMath" name="btnMath" value="+"></td>
             </tr>
             <tr>
