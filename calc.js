@@ -4,7 +4,7 @@ var $ = function (id) { return document.getElementById(id); }
 function getPercent(x, percent) {
 
     return x * percent / 100;
-}
+};
 
 function checkForSignBeforeParenthesis(value) {
 
@@ -18,7 +18,7 @@ function checkForSignBeforeParenthesis(value) {
 
         return false;
     }
-}
+};
 
 function parenthesis() {
 
@@ -30,7 +30,7 @@ function parenthesis() {
             $('display').value = '(';
         } else if (value.length == 1) {
 
-            debugger;
+            ;
             alert('Enter a valid input');
 
         } else if (value.length > 1) {
@@ -41,7 +41,7 @@ function parenthesis() {
                 disableButtonsByName('btnMath');
 
             } else {
-                debugger
+                
                 alert('Enter a valid input');
             }
 
@@ -55,7 +55,7 @@ function parenthesis() {
         }
 
     }
-}
+};
 
 function printPercent() {
     if ($('display').value != '0' && parseInputString($('display').value)) {
@@ -94,7 +94,7 @@ function printPercent() {
 
 
     }
-}
+};
 
 function printOperation(operation) {
 
@@ -109,7 +109,7 @@ function printOperation(operation) {
         } else if ($('display').value == '0') {
             $('display').value = eval('Math.PI');
         } else {
-            debugger
+            
             alert('Enter a valid input');
         }
     } else if (operation == 'power') {
@@ -125,7 +125,7 @@ function printOperation(operation) {
             alert('Enter the power and hit "=" for result');
 
         } else {
-            debugger
+            
             alert('Enter a valid input');
         }
     } else if (operation == 'log') {
@@ -135,7 +135,7 @@ function printOperation(operation) {
             $('display').value = Math.log(eval($('display').value));
 
         } else {
-            debugger
+            
             alert('Enter a valid input');
         }
     } else if (operation == 'root') {
@@ -145,7 +145,7 @@ function printOperation(operation) {
             $('display').value = Math.sqrt(eval($('display').value));
 
         } else {
-            debugger
+            
             alert('Enter a valid input');
         }
     } else if (operation == 'square') {
@@ -155,7 +155,7 @@ function printOperation(operation) {
             $('display').value = eval($('display').value) * eval($('display').value);
 
         } else {
-            debugger
+            
             alert('Enter a valid input');
         }
     }
@@ -184,7 +184,7 @@ function executeMathFunctions() {
         }
     }
     else {
-        debugger
+        
         alert('Enter valid input!!');
     }
 };
@@ -245,7 +245,7 @@ function executeTopButtons() {
                     }
                     $('display').value = base;
                 } else {
-                    debugger
+                    
                     alert("Enter valid input");
                 }
                 enableButtonsByName('btnOpps');
@@ -257,12 +257,12 @@ function executeTopButtons() {
                 $('display').value = eval($('display').value);
             }
             else {
-                debugger
+                
                 alert('Enter Valid Input');
             }
 
         } catch (err) {
-            debugger
+            
             alert('Enter Valid Input');
         }
     }
@@ -276,7 +276,7 @@ function appendInput() {
 function appendArithmeticSymbol() {
 
     if (this.hasAttribute('disabled')) {
-        debugger;
+        ;
         alert('You can not enter Two arithmetic signs together\n');
 
     } else {
