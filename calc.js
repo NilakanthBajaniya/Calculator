@@ -1,19 +1,19 @@
 
 var $ = function (id) { return document.getElementById(id); }
 
-let executefunctions={"addition":"makeAddtion","multiplication":"multiplication"};
+// let executefunctions={"addition":"makeAddtion","multiplication":"multiplication"};
 
-let functions={
-    "addition":addition
-}
+// let functions={
+//     "addition":addition
+// }
 
-function addition(input1,input2){
-    return input1+input2;
-}
+// function addition(input1,input2){
+//     return input1+input2;
+// }
 
-function executeFunction(string,inputvalue1,inputvalue2){
-    return functions["addition"](inputvalue1,inputvalue2);
-}
+// function executeFunction(string){
+//     return functions["addition"](5,7);
+// }
 
 
 function getPercent(x, percent) {
