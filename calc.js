@@ -15,10 +15,9 @@ function checkForSignBeforeParenthesis(value) {
         return true;
 
     } else {
-        
+
         return false;
     }
-
 }
 
 function parenthesis() {
@@ -29,8 +28,7 @@ function parenthesis() {
         if (value == '0') {
 
             $('display').value = '(';
-        }
-        else if (value.length == 1) {
+        } else if (value.length == 1) {
 
             debugger;
             alert('Enter a valid input');
