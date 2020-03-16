@@ -9,9 +9,13 @@ function getPercent(x, percent) {
 function checkForSignBeforeParenthesis(value) {
 
     var charAtLength = value[value.length - 1];
+
     if (charAtLength == '+' || charAtLength == '-' || charAtLength == '*' || charAtLength == '/') {
+
         return true;
+
     } else {
+        
         return false;
     }
 
