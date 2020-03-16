@@ -1,6 +1,21 @@
 
 var $ = function (id) { return document.getElementById(id); }
 
+let executefunctions={"addition":"makeAddtion","multiplication":"multiplication"};
+
+let functions={
+    "addition":addition
+}
+
+function addition(input1,input2){
+    return input1+input2;
+}
+
+function executeFunction(string,inputvalue1,inputvalue2){
+    return functions["addition"](inputvalue1,inputvalue2);
+}
+
+
 function getPercent(x, percent) {
 
     return x * percent / 100;
