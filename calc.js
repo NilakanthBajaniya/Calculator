@@ -120,7 +120,7 @@ function printOperation(operation) {
                 $('display').value = eval('Math.PI *' + $('display').value).toFixed(8);
 
             } else if ($('display').value == '0') {
-                $('display').value = eval('Math.PI');
+                $('display').value = eval('Math.PI').toFixed(8);
             } else {
                 alert('Enter a valid input');
             }
