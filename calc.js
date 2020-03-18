@@ -166,7 +166,7 @@ function printOperation(operation) {
         }
     } else if (operation == 'square') {
 
-        if ($('display').value != '0' && parseInputString($('display').value)) {
+        if (parseInputString($('display').value)) {
 
             $('display').value = eval($('display').value) * eval($('display').value);
 
